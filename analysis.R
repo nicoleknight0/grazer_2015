@@ -21,4 +21,8 @@ trial_data<-read.csv("feeding_trials.csv")
 
 trial_data<-subset(trial_data,trial_type=="EXPT")
 trial_data$time_hrs<-as.factor(trial_data$time_hrs)
-droplevels((trial_data))$grazers
+trial_data$grazer<-droplevels(trial_data$grazer)
+
+#shiiiiiiiiit very significant effect of time
+
+new<-aov(dmass_minctrl~grazer+epiphyte+time_hrs+grazer*epiphyte,data=trial_data)
